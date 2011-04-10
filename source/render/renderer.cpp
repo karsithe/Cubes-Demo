@@ -1,9 +1,7 @@
 #include <vector>
 #include <GL/GLFW.h>
-#include "render\renderer.h"
-#include "render\irenderable.h"
-#include "geometry\cube.h"
-#include "geometry\plane.h"
+#include "render/renderer.h"
+#include "main/icomponent.h"
 
 Renderer::Renderer()
 {
@@ -12,18 +10,10 @@ Renderer::Renderer()
     
 void Renderer::setup()
 {
-    Cube *c = new Cube();
-    c->setup();
-    m_components.push_back(c);
-
-    Plane *p = new Plane();
-    p->setup();
-    m_components.push_back(p);
-
     setupStates();
 }
 
-void Renderer::update()
+void Renderer::update(float _deltaTime)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -31,17 +21,16 @@ void Renderer::update()
     glLoadIdentity();
     gluLookAt(0.0f, 0.0f, 30.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
-    std::vector<iRenderable *>::iterator p;
-    for(p = m_components.begin(); p != m_components.end(); ++p)
+    std::vector<iComponent *>::iterator p;
+    for(p = m_pComponents.begin(); p != m_pComponents.end(); ++p)
     {
-        (*p)->update();
-        (*p)->draw();
+        (*p)->update(_deltaTime);
     }
     
     glfwSwapBuffers();
 }
 
-void Renderer::end()
+void Renderer::destroy()
 {
 
 }

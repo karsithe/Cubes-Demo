@@ -1,19 +1,25 @@
+/*
+    Renderer
+    Manager class for rendering the scene and components within it
+    Hazel McKendrick 2011
+*/
+
+
 #pragma once
 
 #include <vector>
-#include "irenderable.h"
+#include "main/iManager.h"
 
-class Renderer
+class Renderer : public iManager
 {
 public:
     Renderer();
     
     void setup();
-    void update();
-    void end();
+    void update(float _deltaTime);
+    void destroy();
 
 private:
-    std::vector<iRenderable*> m_components;
 
     void setupStates();
 };
