@@ -61,15 +61,15 @@ void Renderer::setupStates()
     glEnable(GL_COLOR_MATERIAL);
 
     glColor4f(1.f, 1.f, 1.f, 1.f);
-    glDisable(GL_LIGHTING);								// Enable Lighting
-    /*glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHTING);								// Enable Lighting
+    glEnable(GL_LIGHT0);
     float amb[] = { 0.3f, 0.3f, 0.3f, 1.f };
     glLightfv(GL_LIGHT0, GL_AMBIENT, amb);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, amb);
     float position[] = { 1.0f, -1.f, 0.f, 0.0f };
     glLightfv(GL_LIGHT0, GL_POSITION, position);
     float global_ambient[] = { 0.3f, 0.3f, 0.3f, 1.f };
-    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);*/
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
 
     glDisable(GL_CULL_FACE);
      

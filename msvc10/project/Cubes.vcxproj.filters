@@ -13,14 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\geometry">
-      <UniqueIdentifier>{6b3e9f3d-e9ab-43e1-b1dd-507373a3920d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\render">
       <UniqueIdentifier>{ce061d25-8a9a-44aa-ba52-7161ee7c5e39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\geometry">
-      <UniqueIdentifier>{4a7774a3-b4eb-45a8-a9a6-07a4e710c80a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\render">
       <UniqueIdentifier>{bda1b9d5-b180-417d-88f5-aa3d9411b5ed}</UniqueIdentifier>
@@ -60,6 +54,9 @@
     <ClCompile Include="..\..\source\physics\physicsmanager.cpp">
       <Filter>Source Files\physics</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\render\cubemesh.cpp">
+      <Filter>Source Files\render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\main\app.h">
@@ -81,6 +78,12 @@
       <Filter>Header Files\main</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\main\manager.h">
+      <Filter>Header Files\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\render\cubemesh.h">
+      <Filter>Header Files\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\main\transform.h">
       <Filter>Header Files\main</Filter>
     </ClInclude>
   </ItemGroup>

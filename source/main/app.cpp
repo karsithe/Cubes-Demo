@@ -1,8 +1,10 @@
 #include <cstdlib>
 #include <GL/GLFW.h>
-#include "app.h"
-#include "render\renderer.h"
-#include "physics\physicsmanager.h"
+#include "main/app.h"
+#include "main/entity.h"
+#include "render/renderer.h"
+#include "render/cubemesh.h"
+#include "physics/physicsmanager.h"
 
 Application::Application()
 {
@@ -23,8 +25,15 @@ bool Application::setup()
         return 1;
     }
 
-    m_pManagers.push_back(new Renderer());
+    Renderer* r = new Renderer();
+    m_pManagers.push_back(r);
 //    m_pManagers.push_back(new PhysicsManager());
+
+    Entity* e = new Entity();
+    CubeMesh* cm = new CubeMesh();
+    e->addComponent(cm);
+    r->addComponent(cm);
+    m_pEntities.push_back(e);
 
     return 0;
 }
@@ -62,6 +71,12 @@ bool Application::run()
 
 bool Application::end()
 {
+    std::vector<Entity *>::iterator _ppEnt;
+    for(_ppEnt = m_pEntities.begin(); _ppEnt != m_pEntities.end(); ++_ppEnt)
+    {
+        delete (*_ppEnt);
+    }
+        
     glfwTerminate();
     return 0;
 }
