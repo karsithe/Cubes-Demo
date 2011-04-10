@@ -8,9 +8,9 @@
 #pragma once
 
 #include <vector>
-#include "main/iManager.h"
+#include "main/manager.h"
 
-class Renderer : public iManager
+class Renderer : public Manager
 {
 public:
     Renderer();

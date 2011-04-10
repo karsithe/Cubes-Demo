@@ -2,7 +2,7 @@
 
 class Entity;
 
-class iComponent
+class Component
 {
 public:
     virtual void setup() = 0;

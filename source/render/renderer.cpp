@@ -1,7 +1,7 @@
 #include <vector>
 #include <GL/GLFW.h>
 #include "render/renderer.h"
-#include "main/icomponent.h"
+#include "main/component.h"
 
 Renderer::Renderer()
 {
@@ -21,7 +21,7 @@ void Renderer::update(float _deltaTime)
     glLoadIdentity();
     gluLookAt(0.0f, 0.0f, 30.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
-    std::vector<iComponent *>::iterator p;
+    std::vector<Component *>::iterator p;
     for(p = m_pComponents.begin(); p != m_pComponents.end(); ++p)
     {
         (*p)->update(_deltaTime);

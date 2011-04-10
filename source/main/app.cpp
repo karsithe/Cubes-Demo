@@ -31,7 +31,7 @@ bool Application::setup()
 
 bool Application::run()
 {
-    std::vector<iManager *>::iterator _ppMgr;
+    std::vector<Manager *>::iterator _ppMgr;
 
     for(_ppMgr = m_pManagers.begin(); _ppMgr != m_pManagers.end(); ++_ppMgr)
     {

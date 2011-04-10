@@ -8,7 +8,8 @@
 
 #include <vector>
 
-class iManager;
+class Manager;
+class Entity;
 
 class Application
 {
@@ -23,6 +24,6 @@ private:
     bool m_run;
     float m_time;
 
-    std::vector<iManager*> m_pManagers;
-
+    std::vector<Manager*> m_pManagers;
+    std::vector<Entity*> m_pEntities;
 };

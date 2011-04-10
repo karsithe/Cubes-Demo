@@ -2,20 +2,20 @@
 
 #include <vector>
 
-class iComponent;
+class Component;
 
-class iManager
+class Manager
 {
 public:
     virtual void setup() = 0;
     virtual void update(float _deltaTime) = 0;
     virtual void destroy() = 0;
 
-    void addComponent(iComponent* _pComponent)
+    void addComponent(Component* _pComponent)
     {
         m_pComponents.push_back(_pComponent);
     }
 
 protected:
-    std::vector<iComponent*> m_pComponents;
+    std::vector<Component*> m_pComponents;
 };

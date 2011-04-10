@@ -71,17 +71,17 @@
     <ClInclude Include="..\..\source\maths\vector3.h">
       <Filter>Header Files\maths</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\main\imanager.h">
-      <Filter>Header Files\main</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\main\icomponent.h">
-      <Filter>Header Files\main</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\main\entity.h">
       <Filter>Header Files\main</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\physics\physicsmanager.h">
       <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\main\component.h">
+      <Filter>Header Files\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\main\manager.h">
+      <Filter>Header Files\main</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
