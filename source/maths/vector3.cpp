@@ -55,3 +55,33 @@ Vector3  Vector3::operator -  (const Vector3& _rhs) const
     lhs -= _rhs;
     return lhs;
 }
+
+Vector3& Vector3::operator /= (const float& _rhs)
+{
+    x /= _rhs;
+    y /= _rhs;
+    z /= _rhs;
+    return (*this);
+}
+
+Vector3& Vector3::operator *= (const float& _rhs)
+{
+    x *= _rhs;
+    y *= _rhs;
+    z *= _rhs;
+    return (*this);
+}
+
+Vector3  Vector3::operator /  (const float& _rhs) const
+{
+    Vector3 lhs = (*this);
+    lhs /= _rhs;
+    return lhs;
+}
+
+Vector3  Vector3::operator *  (const float& _rhs) const
+{
+    Vector3 lhs = (*this);
+    lhs *= _rhs;
+    return lhs;
+}

@@ -3,7 +3,8 @@
 
 void PhysicsManager::setup()
 {
-
+    m_gravity = -9.8f;
+    m_floorY = -10.f;
 }
 
 void PhysicsManager::update(float _deltaTime)

@@ -2,8 +2,10 @@
 #include <GL/GLFW.h>
 #include "main/app.h"
 #include "main/entity.h"
+#include "main/transform.h"
 #include "render/renderer.h"
 #include "render/cubemesh.h"
+#include "physics/rigidbody.h"
 #include "physics/physicsmanager.h"
 
 Application::Application()
@@ -27,12 +29,18 @@ bool Application::setup()
 
     Renderer* r = new Renderer();
     m_pManagers.push_back(r);
-//    m_pManagers.push_back(new PhysicsManager());
+    PhysicsManager* p = new PhysicsManager();
+    m_pManagers.push_back(p);
 
-    Entity* e = new Entity();
+    Entity* e = new Entity(Transform(Vector3(0.f,15.f,0.f)));
     CubeMesh* cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
+
+    RigidBody* rb = new RigidBody();
+    e->addComponent(rb);
+    p->addComponent(rb);
+
     m_pEntities.push_back(e);
 
     return 0;

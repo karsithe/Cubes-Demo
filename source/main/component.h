@@ -1,6 +1,7 @@
 #pragma once
 
 class Entity;
+class Manager;
 
 class Component
 {
@@ -14,6 +15,12 @@ public:
         m_pParent = _parent;
     }
 
+    virtual void setManager(Manager* _manager)
+    {
+        m_pManager = _manager;
+    }
+
 protected:
     Entity* m_pParent;
+    Manager* m_pManager;
 };

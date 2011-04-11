@@ -2,19 +2,17 @@
 
 #include "maths\vector3.h"
 
-class AABB
+class Transform;
+
+class AABBCollider
 {
 public:
-    AABB(Vector3 _position, Vector3 _scale);
+    AABBCollider(Transform* _transform);
 
-    void position(Vector3 _position);
-
-    Vector3 position();
-    Vector3 start();
-    Vector3 end();
+    Vector3 getStart();
+    Vector3 getEnd();
 
 private:
-    Vector3 m_position;
-    Vector3 m_scale;
+    Transform* m_pTransform;
     Vector3 m_start, m_end;
 };

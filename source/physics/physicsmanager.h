@@ -9,6 +9,9 @@ public:
     void update(float _deltaTime);
     void destroy();
 
+    float m_gravity;
+    float m_floorY;
+
 private:
 
 };

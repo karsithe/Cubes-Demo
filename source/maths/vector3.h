@@ -23,8 +23,8 @@ public:
     Vector3  operator +  (const Vector3& _rhs) const;
     Vector3  operator -  (const Vector3& _rhs) const;
 
-    /*Vector3& operator /= (const float& _rhs);
+    Vector3& operator /= (const float& _rhs);
     Vector3& operator *= (const float& _rhs);
     Vector3  operator /  (const float& _rhs) const;
-    Vector3  operator *  (const float& _rhs) const;*/
+    Vector3  operator *  (const float& _rhs) const;
 };

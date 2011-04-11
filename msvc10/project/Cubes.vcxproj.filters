@@ -57,6 +57,9 @@
     <ClCompile Include="..\..\source\render\cubemesh.cpp">
       <Filter>Source Files\render</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\physics\rigidbody.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\main\app.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="..\..\source\main\transform.h">
       <Filter>Header Files\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\physics\rigidbody.h">
+      <Filter>Header Files\physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

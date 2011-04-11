@@ -1,8 +1,7 @@
 #pragma once
 
 #include <vector>
-
-class Component;
+#include "main/component.h"
 
 class Manager
 {
@@ -13,6 +12,7 @@ public:
 
     void addComponent(Component* _pComponent)
     {
+        _pComponent->setManager(this);
         m_pComponents.push_back(_pComponent);
     }
 
