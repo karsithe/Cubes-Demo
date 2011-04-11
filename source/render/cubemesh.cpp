@@ -5,7 +5,7 @@
 
 void CubeMesh::setup()
 {
-
+    m_colour = Vector3(rand()*1.0f/RAND_MAX,rand()*1.0f/RAND_MAX,rand()*1.0f/RAND_MAX);
 }
 
 void CubeMesh::update(float _deltaTime)
@@ -18,7 +18,7 @@ void CubeMesh::update(float _deltaTime)
     glRotatef(trans.m_rotation.z, 0.0f, 0.0f, 1.0f);
     glRotatef(trans.m_rotation.x, 1.0f, 0.0f, 0.0f);
     glRotatef(trans.m_rotation.y, 0.0f, 1.0f, 0.0f);
-    glColor3f(0.0f, 1.0f, 0.0f);
+    glColor3f(m_colour.x, m_colour.y, m_colour.z);
 
     glBegin(GL_QUADS);
 

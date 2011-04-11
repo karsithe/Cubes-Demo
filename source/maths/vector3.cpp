@@ -85,3 +85,8 @@ Vector3  Vector3::operator *  (const float& _rhs) const
     lhs *= _rhs;
     return lhs;
 }
+
+float Vector3::dot(const Vector3& _rhs) const
+{
+    return x * _rhs.x + y * _rhs.y + z * _rhs.z;
+}

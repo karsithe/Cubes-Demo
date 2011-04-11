@@ -10,5 +10,6 @@ public:
     void destroy();
 
 private:
-    
+    Vector3 m_colour;
+
 };

@@ -36,11 +36,27 @@ bool Application::setup()
     CubeMesh* cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
-
     RigidBody* rb = new RigidBody();
     e->addComponent(rb);
     p->addComponent(rb);
+    m_pEntities.push_back(e);
 
+    e = new Entity(Transform(Vector3(1.0f,10.f,0.f)));
+    cm = new CubeMesh();
+    e->addComponent(cm);
+    r->addComponent(cm);
+    rb = new RigidBody();
+    e->addComponent(rb);
+    p->addComponent(rb);
+    m_pEntities.push_back(e);
+
+    e = new Entity(Transform(Vector3(-1.0f,12.f,0.f)));
+    cm = new CubeMesh();
+    e->addComponent(cm);
+    r->addComponent(cm);
+    rb = new RigidBody();
+    e->addComponent(rb);
+    p->addComponent(rb);
     m_pEntities.push_back(e);
 
     return 0;

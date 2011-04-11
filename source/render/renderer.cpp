@@ -11,6 +11,12 @@ Renderer::Renderer()
 void Renderer::setup()
 {
     setupStates();
+
+    std::vector<Component *>::iterator p;
+    for(p = m_pComponents.begin(); p != m_pComponents.end(); ++p)
+    {
+        (*p)->setup();
+    }
 }
 
 void Renderer::update(float _deltaTime)
@@ -32,7 +38,12 @@ void Renderer::update(float _deltaTime)
 
 void Renderer::destroy()
 {
-
+    std::vector<Component *>::iterator p;
+    for(p = m_pComponents.begin(); p != m_pComponents.end(); ++p)
+    {
+        (*p)->destroy();
+        delete (*p);
+    }
 }
 
 void Renderer::setupStates()

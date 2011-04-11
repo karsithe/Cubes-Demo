@@ -13,5 +13,6 @@ public:
     float m_floorY;
 
 private:
+    void bruteForceCollision();
 
 };

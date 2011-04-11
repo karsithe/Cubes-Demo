@@ -6,6 +6,8 @@ class Manager;
 class Component
 {
 public:
+    Component() {}
+
     virtual void setup() = 0;
     virtual void update(float _deltaTime) = 0;
     virtual void destroy() = 0;

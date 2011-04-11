@@ -1,5 +1,7 @@
 #pragma once
 
+#include "physics/aabb.h"
+#include "main/transform.h"
 #include "main/component.h"
 
 class PhysicsManager;
@@ -7,17 +9,19 @@ class PhysicsManager;
 class RigidBody : public Component
 {
 public:
+    RigidBody() : Component() {}
+
     void setup();
     void update(float _deltaTime);
     void destroy();
 
     void setManager(Manager* _manager);
 
-    Vector3 getAABBStart();
-    Vector3 getAABBEnd();
+    AABB getAABB();
 
 private:
     PhysicsManager* m_pPhysics;
     Vector3 m_velocity;
-    Transform m_pTransform;
+    Transform m_transform;
+    AABB m_AABB;
 };

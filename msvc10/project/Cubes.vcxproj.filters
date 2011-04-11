@@ -92,5 +92,8 @@
     <ClInclude Include="..\..\source\physics\rigidbody.h">
       <Filter>Header Files\physics</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\physics\aabb.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
