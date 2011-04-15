@@ -5,6 +5,7 @@
 #include "main/transform.h"
 #include "render/renderer.h"
 #include "render/cubemesh.h"
+#include "physics/collider.h"
 #include "physics/rigidbody.h"
 #include "physics/physicsmanager.h"
 
@@ -32,20 +33,20 @@ bool Application::setup()
     PhysicsManager* p = new PhysicsManager();
     m_pManagers.push_back(p);
 
-    Entity* e = new Entity(Transform(Vector3(0.f,15.f,0.f)));
+    Entity* e = new Entity(Transform(Vector3(1.f,15.f,0.f)));
     CubeMesh* cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
-    RigidBody* rb = new RigidBody();
+    RigidBody* rb = new RigidBody(COLLIDER_AABB, 2.f);
     e->addComponent(rb);
     p->addComponent(rb);
     m_pEntities.push_back(e);
 
-    e = new Entity(Transform(Vector3(1.0f,10.f,0.f)));
+    e = new Entity(Transform(Vector3(0.0f,10.f,0.f)));
     cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
-    rb = new RigidBody();
+    rb = new RigidBody(COLLIDER_AABB);
     e->addComponent(rb);
     p->addComponent(rb);
     m_pEntities.push_back(e);
@@ -54,11 +55,19 @@ bool Application::setup()
     cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
-    rb = new RigidBody();
+    rb = new RigidBody(COLLIDER_AABB);
     e->addComponent(rb);
     p->addComponent(rb);
     m_pEntities.push_back(e);
 
+    e = new Entity(Transform(Vector3(0.f, -10.f, 0.f), Vector3(15.f, 0.1f, 15.f)));
+    cm = new CubeMesh();
+    e->addComponent(cm);
+    r->addComponent(cm);
+    rb = new RigidBody(COLLIDER_PLANE, 10000000.f, false);
+    e->addComponent(rb);
+    p->addComponent(rb);
+    m_pEntities.push_back(e);
     return 0;
 }
 

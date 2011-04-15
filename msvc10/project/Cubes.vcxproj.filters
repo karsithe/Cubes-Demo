@@ -60,6 +60,12 @@
     <ClCompile Include="..\..\source\physics\rigidbody.cpp">
       <Filter>Source Files\physics</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\physics\collider.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\physics\planecollider.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\main\app.h">
@@ -93,6 +99,15 @@
       <Filter>Header Files\physics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\physics\aabb.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\physics\collider.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\physics\planecollider.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\physics\contact.h">
       <Filter>Header Files\physics</Filter>
     </ClInclude>
   </ItemGroup>

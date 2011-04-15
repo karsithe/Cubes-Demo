@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include "maths/vector3.h"
 
 Vector3::Vector3()
@@ -89,4 +90,17 @@ Vector3  Vector3::operator *  (const float& _rhs) const
 float Vector3::dot(const Vector3& _rhs) const
 {
     return x * _rhs.x + y * _rhs.y + z * _rhs.z;
+}
+
+float Vector3::magnitude()
+{
+    return sqrt(x*x + y*y + z*z);
+}
+
+void Vector3::normalise()
+{
+    float m = magnitude();
+    x /= m;
+    y /= m;
+    z /= m;
 }

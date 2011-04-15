@@ -29,4 +29,6 @@ public:
     Vector3  operator *  (const float& _rhs) const;
 
     float dot(const Vector3& _rhs) const;
+    float magnitude();
+    void normalise();
 };

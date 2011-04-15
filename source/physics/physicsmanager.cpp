@@ -1,11 +1,11 @@
 #include "main/component.h"
 #include "physics/rigidbody.h"
-#include "physics/aabb.h"
+#include "physics/contact.h"
 #include "physics/physicsmanager.h"
 
 void PhysicsManager::setup()
 {
-    m_gravity = -1.f;
+    m_gravity = -0.1f;
     m_floorY = -10.f;
 
     std::vector<Component *>::iterator ppBody;
@@ -17,13 +17,18 @@ void PhysicsManager::setup()
 
 void PhysicsManager::update(float _deltaTime)
 {
-    std::vector<Component *>::iterator ppBody;
-    for(ppBody = m_pComponents.begin(); ppBody != m_pComponents.end(); ++ppBody)
+    std::vector<RigidBody *>::iterator ppBody;
+    for(ppBody = m_pBodies.begin(); ppBody != m_pBodies.end(); ++ppBody)
     {
-        (*ppBody)->update(_deltaTime);
+        (*ppBody)->applyExternalForces(_deltaTime);
     }
 
     bruteForceCollision();
+
+    for(ppBody = m_pBodies.begin(); ppBody != m_pBodies.end(); ++ppBody)
+    {
+        (*ppBody)->update(_deltaTime);
+    }
 }
 
 void PhysicsManager::destroy()
@@ -36,17 +41,27 @@ void PhysicsManager::destroy()
     }
 }
 
+void PhysicsManager::addComponent(Component* _pComponent)
+{
+    _pComponent->setManager(this);
+    m_pComponents.push_back(_pComponent);
+    m_pBodies.push_back(dynamic_cast<RigidBody*>(_pComponent));
+}
+
 void PhysicsManager::bruteForceCollision()
 {
-    std::vector<Component *>::iterator ppBody1, ppBody2;
-    for(ppBody1 = m_pComponents.begin(); ppBody1 != m_pComponents.end(); ++ppBody1)
+    for(int i = 0; i < m_pBodies.size()-1; ++i )
     {
-        for(ppBody2 = m_pComponents.begin(); ppBody2 != m_pComponents.end(); ++ppBody2)
+        for(int j = i+1; j < m_pBodies.size(); ++j)
         {
-            if( dynamic_cast<RigidBody*>((*ppBody1))->getAABB().test( dynamic_cast<RigidBody*>((*ppBody2))->getAABB() ) )
+            if(m_pBodies[i] != m_pBodies[j])
             {
-//                dynamic_cast<RigidBody*>((*ppBody1))->onCollide();
-//                dynamic_cast<RigidBody*>((*ppBody2))->onCollide();
+                Contact c;
+                if( m_pBodies[i]->getCollider()->test( m_pBodies[j]->getCollider(), &c ) )
+                {
+                    m_pBodies[i]->onCollide(c, m_pBodies[j]->getMass(), m_pBodies[j]->getVelocity());
+                    m_pBodies[j]->onCollide(c, m_pBodies[i]->getMass(), m_pBodies[i]->getVelocity());
+                }
             }
         }
     }

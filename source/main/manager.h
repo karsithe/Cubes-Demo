@@ -10,7 +10,7 @@ public:
     virtual void update(float _deltaTime) = 0;
     virtual void destroy() = 0;
 
-    void addComponent(Component* _pComponent)
+    virtual void addComponent(Component* _pComponent)
     {
         _pComponent->setManager(this);
         m_pComponents.push_back(_pComponent);

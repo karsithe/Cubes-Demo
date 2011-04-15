@@ -1,27 +1,38 @@
 #pragma once
 
-#include "physics/aabb.h"
 #include "main/transform.h"
 #include "main/component.h"
+#include "physics/collider.h"
+#include "physics/contact.h"
 
 class PhysicsManager;
 
 class RigidBody : public Component
 {
 public:
-    RigidBody() : Component() {}
+    RigidBody(ColliderType m_type = COLLIDER_AABB, float _mass = 1.f, bool _applyGravity = true);
 
     void setup();
+    void applyExternalForces(float _deltaTime);
     void update(float _deltaTime);
     void destroy();
 
-    void setManager(Manager* _manager);
+    void onCollide(Contact _contact, float _mass, Vector3 _velocity);
 
-    AABB getAABB();
+    void setManager(Manager* _manager);
+    Collider* getCollider();
+    Transform getTransform();
+    float getMass();
+    Vector3 getVelocity();
 
 private:
     PhysicsManager* m_pPhysics;
+
     Vector3 m_velocity;
     Transform m_transform;
-    AABB m_AABB;
+    float m_mass;
+    bool m_applyGravity;
+
+    ColliderType m_colliderType;
+    Collider* m_pCollider;
 };
