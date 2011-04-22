@@ -33,7 +33,7 @@ bool Application::setup()
     PhysicsManager* p = new PhysicsManager();
     m_pManagers.push_back(p);
 
-    Entity* e = new Entity(Transform(Vector3(1.f,15.f,0.f)));
+    Entity* e = new Entity(Transform(Vector3(3.f,15.f,0.f)));
     CubeMesh* cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
@@ -51,7 +51,7 @@ bool Application::setup()
     p->addComponent(rb);
     m_pEntities.push_back(e);
 
-    e = new Entity(Transform(Vector3(-1.0f,12.f,0.f)));
+    e = new Entity(Transform(Vector3(-3.0f,12.f,0.f)));
     cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);

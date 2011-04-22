@@ -2,6 +2,8 @@
 
 #include "maths/vector3.h"
 
+class RigidBody;
+
 class Contact
 {
 public:
@@ -12,6 +14,7 @@ public:
         : m_normal(_normal), m_distance(_dist)
     {}
 
+    RigidBody *m_bodyA, *m_bodyB;
     Vector3 m_normal;
     float m_distance;
 };
