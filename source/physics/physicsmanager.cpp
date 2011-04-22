@@ -63,17 +63,17 @@ void PhysicsManager::addComponent(Component* _pComponent)
 
 void PhysicsManager::bruteForceCollision()
 {
-    for(int i = 0; i < m_pBodies.size()-1; ++i )
+    for(unsigned int i = 0; i < m_pBodies.size()-1; ++i )
     {
-        for(int j = i+1; j < m_pBodies.size(); ++j)
+        for(unsigned int j = i+1; j < m_pBodies.size(); ++j)
         {
             if(m_pBodies[i] != m_pBodies[j])
             {
                 Contact c;
                 if( m_pBodies[i]->getCollider()->test( m_pBodies[j]->getCollider(), &c ) )
                 {
-                    m_pBodies[i]->onCollide(c, m_pBodies[j]->getMass(), m_pBodies[j]->getVelocity());
-                    m_pBodies[j]->onCollide(c, m_pBodies[i]->getMass(), m_pBodies[i]->getVelocity());
+                    m_pBodies[i]->onCollide(c, m_pBodies[j]);
+                    m_pBodies[j]->onCollide(c, m_pBodies[i]);
                 }
             }
         }

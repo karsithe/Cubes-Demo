@@ -4,42 +4,42 @@
 #include "maths/vector3.h"
 
 Vector3::Vector3()
-    : x(0.f), y(0.f), z(0.f)
+    : m_x(0.f), m_y(0.f), m_z(0.f)
 { }
 
 Vector3::Vector3(float _x, float _y, float _z)
-    : x(_x), y(_y), z(_z)
+    : m_x(_x), m_y(_y), m_z(_z)
 { }
 
 Vector3& Vector3::operator = (const Vector3& _rhs)
 {
-    x = _rhs.x;
-    y = _rhs.y;
-    z = _rhs.z;
+    m_x = _rhs.m_x;
+    m_y = _rhs.m_y;
+    m_z = _rhs.m_z;
     return (*this);
 }
 
 bool Vector3::operator == (const Vector3& _rhs)
 {
     return 
-    x == _rhs.x &&
-    y == _rhs.y &&
-    z == _rhs.z;
+    m_x == _rhs.m_x &&
+    m_y == _rhs.m_y &&
+    m_z == _rhs.m_z;
 }
 
 Vector3& Vector3::operator += (const Vector3& _rhs)
 {
-    x += _rhs.x;
-    y += _rhs.y;
-    z += _rhs.z;
+    m_x += _rhs.m_x;
+    m_y += _rhs.m_y;
+    m_z += _rhs.m_z;
     return (*this);
 }
 
 Vector3& Vector3::operator -= (const Vector3& _rhs)
 {
-    x -= _rhs.x;
-    y -= _rhs.y;
-    z -= _rhs.z;
+    m_x -= _rhs.m_x;
+    m_y -= _rhs.m_y;
+    m_z -= _rhs.m_z;
     return (*this);
 }
 
@@ -59,17 +59,17 @@ Vector3  Vector3::operator -  (const Vector3& _rhs) const
 
 Vector3& Vector3::operator /= (const float& _rhs)
 {
-    x /= _rhs;
-    y /= _rhs;
-    z /= _rhs;
+    m_x /= _rhs;
+    m_y /= _rhs;
+    m_z /= _rhs;
     return (*this);
 }
 
 Vector3& Vector3::operator *= (const float& _rhs)
 {
-    x *= _rhs;
-    y *= _rhs;
-    z *= _rhs;
+    m_x *= _rhs;
+    m_y *= _rhs;
+    m_z *= _rhs;
     return (*this);
 }
 
@@ -89,18 +89,18 @@ Vector3  Vector3::operator *  (const float& _rhs) const
 
 float Vector3::dot(const Vector3& _rhs) const
 {
-    return x * _rhs.x + y * _rhs.y + z * _rhs.z;
+    return m_x * _rhs.m_x + m_y * _rhs.m_y + m_z * _rhs.m_z;
 }
 
 float Vector3::magnitude()
 {
-    return sqrt(x*x + y*y + z*z);
+    return sqrt(m_x*m_x + m_y*m_y + m_z*m_z);
 }
 
 void Vector3::normalise()
 {
     float m = magnitude();
-    x /= m;
-    y /= m;
-    z /= m;
+    m_x /= m;
+    m_y /= m;
+    m_z /= m;
 }

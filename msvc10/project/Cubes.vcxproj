@@ -71,6 +71,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\source\main\app.cpp" />
     <ClCompile Include="..\..\source\main\main.cpp" />
+    <ClCompile Include="..\..\source\maths\quaternion.cpp" />
     <ClCompile Include="..\..\source\maths\vector3.cpp" />
     <ClCompile Include="..\..\source\physics\aabb.cpp" />
     <ClCompile Include="..\..\source\physics\collider.cpp" />
@@ -86,8 +87,10 @@
     <ClInclude Include="..\..\source\main\entity.h" />
     <ClInclude Include="..\..\source\main\manager.h" />
     <ClInclude Include="..\..\source\main\transform.h" />
+    <ClInclude Include="..\..\source\maths\quaternion.h" />
     <ClInclude Include="..\..\source\maths\vector3.h" />
     <ClInclude Include="..\..\source\physics\aabb.h" />
+    <ClInclude Include="..\..\source\physics\body.h" />
     <ClInclude Include="..\..\source\physics\collider.h" />
     <ClInclude Include="..\..\source\physics\contact.h" />
     <ClInclude Include="..\..\source\physics\physicsmanager.h" />

@@ -17,21 +17,29 @@ public:
     void update(float _deltaTime);
     void destroy();
 
-    void onCollide(Contact _contact, float _mass, Vector3 _velocity);
+    void onCollide(Contact _contact, RigidBody* _body);
 
     void setManager(Manager* _manager);
+    
     Collider* getCollider();
     Transform getTransform();
     float getMass();
+    float getInverseMass();
     Vector3 getVelocity();
 
 private:
+    void recalculateVelocity();
+
     PhysicsManager* m_pPhysics;
 
     Vector3 m_velocity;
     Transform m_transform;
+    Vector3 m_momentum;
+
     float m_mass;
-    bool m_applyGravity;
+    float m_inverseMass;
+
+    bool m_static;
 
     ColliderType m_colliderType;
     Collider* m_pCollider;

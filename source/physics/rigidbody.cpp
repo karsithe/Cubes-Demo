@@ -9,7 +9,7 @@
 #include "physics/contact.h"
 
 RigidBody::RigidBody(ColliderType _type, float _mass, bool _applyGravity)
-    : m_colliderType(_type), m_mass(_mass), m_applyGravity(_applyGravity)
+    : m_colliderType(_type), m_mass(_mass), m_inverseMass(1.f/_mass), m_static(_applyGravity)
 {
 
 }
@@ -33,7 +33,7 @@ void RigidBody::applyExternalForces(float _deltaTime)
 {
     m_transform = m_pParent->getTransform();
 
-    if(m_applyGravity)
+    if(m_static)
     {
         m_velocity += Vector3(0.f,1.f,0.f) *m_pPhysics->m_gravity * _deltaTime;
     }
@@ -58,13 +58,13 @@ void RigidBody::setManager(Manager* _manager)
     m_pPhysics = dynamic_cast<PhysicsManager*>(_manager);
 }
 
-void RigidBody::onCollide(Contact _contact, float _mass, Vector3 _velocity)
+void RigidBody::onCollide(Contact _contact, RigidBody* _body)
 {
     // Modify velocity
-    Vector3 relativeV = m_velocity - _velocity;
-    Vector3 impulse = _contact.m_normal * (relativeV.dot(_contact.m_normal)) * (1.8f) / (1/m_mass + 1/_mass);
+    Vector3 relativeV = m_velocity - _body->getVelocity();
+    Vector3 impulse = _contact.m_normal * (relativeV.dot(_contact.m_normal)) * (1.8f) / (m_inverseMass + _body->getInverseMass());
 
-    m_velocity -= impulse * 1/m_mass;
+    m_velocity -= impulse * m_inverseMass;
 }
 
 Collider* RigidBody::getCollider()
@@ -80,10 +80,19 @@ Transform RigidBody::getTransform()
 float RigidBody::getMass()
 {
     return m_mass;
+}
 
+float RigidBody::getInverseMass()
+{
+    return m_inverseMass;
 }
 
 Vector3 RigidBody::getVelocity()
 {
     return m_velocity;
+}
+
+void RigidBody::recalculateVelocity()
+{
+    m_velocity = m_momentum * m_inverseMass;
 }

@@ -13,12 +13,12 @@ void CubeMesh::update(float _deltaTime)
     Transform trans = m_pParent->getTransform();
     glPushMatrix();
 
-    glTranslatef(trans.m_position.x, trans.m_position.y, trans.m_position.z);
-    glScalef(trans.m_scale.x, trans.m_scale.y, trans.m_scale.z);
-    glRotatef(trans.m_rotation.z, 0.0f, 0.0f, 1.0f);
-    glRotatef(trans.m_rotation.x, 1.0f, 0.0f, 0.0f);
-    glRotatef(trans.m_rotation.y, 0.0f, 1.0f, 0.0f);
-    glColor3f(m_colour.x, m_colour.y, m_colour.z);
+    glTranslatef(trans.m_position.m_x, trans.m_position.m_y, trans.m_position.m_z);
+    glScalef(trans.m_scale.m_x, trans.m_scale.m_y, trans.m_scale.m_z);
+    glRotatef(trans.m_rotation.m_z, 0.0f, 0.0f, 1.0f);
+    glRotatef(trans.m_rotation.m_x, 1.0f, 0.0f, 0.0f);
+    glRotatef(trans.m_rotation.m_y, 0.0f, 1.0f, 0.0f);
+    glColor3f(m_colour.m_x, m_colour.m_y, m_colour.m_z);
 
     glBegin(GL_QUADS);
 
