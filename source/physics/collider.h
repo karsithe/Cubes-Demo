@@ -24,6 +24,7 @@ public:
     virtual bool testPlane(PlaneCollider* _col, Contact* _contact) = 0;
 
     Vector3 m_position;
+    RigidBody* m_parent;
 
 protected:
     ColliderType m_type;

@@ -60,6 +60,7 @@ void RigidBody::setManager(Manager* _manager)
 
 void RigidBody::onCollide(Contact _contact, float _mass, Vector3 _velocity)
 {
+    // Modify velocity
     Vector3 relativeV = m_velocity - _velocity;
     Vector3 impulse = _contact.m_normal * (relativeV.dot(_contact.m_normal)) * (1.8f) / (1/m_mass + 1/_mass);
 

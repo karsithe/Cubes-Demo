@@ -17,7 +17,10 @@ bool PlaneCollider::testAABB(AABB* _col, Contact* _contact)
 
     if(_contact)
     {
+        _contact->m_bodyA = this->m_parent;
+        _contact->m_bodyB = _col->m_parent;
         _contact->m_normal = m_normal;
+        _contact->m_distance = abs(s) - r;
     }
     return abs(s) <= r;
 }

@@ -20,7 +20,10 @@ bool AABB::testAABB(AABB* _col, Contact* _contact)
     if (abs(m_position.z - _col->m_position.z) > (m_radii.z + _col->m_radii.z)) return false;
     if(_contact)
     {
+        _contact->m_bodyA = this->m_parent;
+        _contact->m_bodyB = _col->m_parent;
         _contact->m_normal = m_position - _col->m_position;
+        _contact->m_distance = (_contact->m_normal - (m_radii+_col->m_radii)).magnitude();
         _contact->m_normal.normalise();
     }
     return true;
@@ -32,7 +35,10 @@ bool AABB::testPlane(PlaneCollider* _col, Contact* _contact)
     float s = _col->m_normal.dot( m_position ) - _col->m_normal.dot( _col->m_position );
     if(_contact)
     {
+        _contact->m_bodyA = this->m_parent;
+        _contact->m_bodyB = _col->m_parent;
         _contact->m_normal = _col->m_normal;
+        _contact->m_distance = abs(s) - r;
     }
     return abs(s) <= r;
 }

@@ -5,6 +5,8 @@
 
 void PhysicsManager::setup()
 {
+    m_fixedDeltaTime = 1/60.f;
+    m_timeAccumulator = 0.f;
     m_gravity = -0.1f;
     m_floorY = -10.f;
 
@@ -16,6 +18,17 @@ void PhysicsManager::setup()
 }
 
 void PhysicsManager::update(float _deltaTime)
+{
+    m_timeAccumulator += _deltaTime;
+
+    while(m_timeAccumulator > m_fixedDeltaTime)
+    {
+        fixedUpdate(m_fixedDeltaTime);
+        m_timeAccumulator -= m_fixedDeltaTime;
+    }
+}
+
+void PhysicsManager::fixedUpdate(float _deltaTime)
 {
     std::vector<RigidBody *>::iterator ppBody;
     for(ppBody = m_pBodies.begin(); ppBody != m_pBodies.end(); ++ppBody)

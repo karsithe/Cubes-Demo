@@ -18,7 +18,11 @@ public:
     float m_floorY;
 
 private:
+    void fixedUpdate(float _deltaTime);
     void bruteForceCollision();
 
     std::vector<RigidBody*> m_pBodies;
+
+    float m_fixedDeltaTime;
+    float m_timeAccumulator;
 };
