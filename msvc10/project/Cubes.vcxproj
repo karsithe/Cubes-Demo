@@ -72,6 +72,7 @@
     <ClCompile Include="..\..\source\main\app.cpp" />
     <ClCompile Include="..\..\source\main\main.cpp" />
     <ClCompile Include="..\..\source\maths\vector3.cpp" />
+    <ClCompile Include="..\..\source\physics\aabb.cpp" />
     <ClCompile Include="..\..\source\physics\collider.cpp" />
     <ClCompile Include="..\..\source\physics\physicsmanager.cpp" />
     <ClCompile Include="..\..\source\physics\planecollider.cpp" />
