@@ -77,6 +77,7 @@
     <ClCompile Include="..\..\source\maths\vector3.cpp" />
     <ClCompile Include="..\..\source\physics\aabb.cpp" />
     <ClCompile Include="..\..\source\physics\collider.cpp" />
+    <ClCompile Include="..\..\source\physics\obb.cpp" />
     <ClCompile Include="..\..\source\physics\physicsmanager.cpp" />
     <ClCompile Include="..\..\source\physics\planecollider.cpp" />
     <ClCompile Include="..\..\source\physics\rigidbody.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="..\..\source\physics\bodystate.h" />
     <ClInclude Include="..\..\source\physics\collider.h" />
     <ClInclude Include="..\..\source\physics\contact.h" />
+    <ClInclude Include="..\..\source\physics\obb.h" />
     <ClInclude Include="..\..\source\physics\physicsmanager.h" />
     <ClInclude Include="..\..\source\physics\planecollider.h" />
     <ClInclude Include="..\..\source\physics\rigidbody.h" />

@@ -33,16 +33,16 @@ bool Application::setup()
     PhysicsManager* p = new PhysicsManager();
     m_pManagers.push_back(p);
 
-    Entity* e = new Entity(Transform(Vector3(1.f,15.f,0.f)));
+    Entity* e = new Entity(Transform(Vector3(1.f,15.f,0.f), Vector3(3.f, 3.f, 3.f)));
     CubeMesh* cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
-    RigidBody* rb = new RigidBody(COLLIDER_AABB, 2.f);
+    RigidBody* rb = new RigidBody(COLLIDER_AABB);
     e->addComponent(rb);
     p->addComponent(rb);
     m_pEntities.push_back(e);
 
-    e = new Entity(Transform(Vector3(0.0f,10.f,0.f)));
+    e = new Entity(Transform(Vector3(0.0f,10.f,0.f), Vector3(1.f, 4.f, 3.f)));
     cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
@@ -51,7 +51,7 @@ bool Application::setup()
     p->addComponent(rb);
     m_pEntities.push_back(e);
 
-    e = new Entity(Transform(Vector3(-3.0f,12.f,0.f)));
+    e = new Entity(Transform(Vector3(-3.0f,12.f,0.f), Vector3(3.f, 3.f, 3.f)));
     cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
@@ -64,7 +64,7 @@ bool Application::setup()
     cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
-    rb = new RigidBody(COLLIDER_PLANE, 10000000.f, false);
+    rb = new RigidBody(COLLIDER_PLANE);
     e->addComponent(rb);
     p->addComponent(rb);
     m_pEntities.push_back(e);

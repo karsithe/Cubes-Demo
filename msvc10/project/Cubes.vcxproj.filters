@@ -78,6 +78,9 @@
     <ClCompile Include="..\..\source\maths\quaternion.cpp">
       <Filter>Source Files\maths</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\physics\obb.cpp">
+      <Filter>Source Files\physics\colliders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\main\app.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="..\..\source\physics\bodystate.h">
       <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\physics\obb.h">
+      <Filter>Header Files\physics\colliders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

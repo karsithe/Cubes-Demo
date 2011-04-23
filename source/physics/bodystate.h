@@ -9,7 +9,7 @@
 #include "maths/quaternion.h"
 #include "maths/vector3.h"
 
-class Body
+class BodyState
 {
 public:
     // Updated
@@ -24,6 +24,7 @@ public:
     Vector3 m_angularVelocity;
 
     // Constant
+    bool m_static;
     float m_mass;
     float m_inverseMass;
     float m_inertia;

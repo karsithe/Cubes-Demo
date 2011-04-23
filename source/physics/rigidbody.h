@@ -4,13 +4,14 @@
 #include "main/component.h"
 #include "physics/collider.h"
 #include "physics/contact.h"
+#include "physics/bodystate.h"
 
 class PhysicsManager;
 
 class RigidBody : public Component
 {
 public:
-    RigidBody(ColliderType m_type = COLLIDER_AABB, float _mass = 1.f, bool _applyGravity = true);
+    RigidBody(ColliderType m_type = COLLIDER_AABB);
 
     void setup();
     void applyExternalForces(float _deltaTime);
@@ -22,25 +23,14 @@ public:
     void setManager(Manager* _manager);
     
     Collider* getCollider();
-    Transform getTransform();
-    float getMass();
-    float getInverseMass();
-    Vector3 getVelocity();
+    BodyState& getBody();
 
 private:
-    void recalculateVelocity();
-
     PhysicsManager* m_pPhysics;
 
-    Vector3 m_velocity;
-    Transform m_transform;
-    Vector3 m_momentum;
-
-    float m_mass;
-    float m_inverseMass;
-
-    bool m_static;
+    BodyState m_body;
 
     ColliderType m_colliderType;
-    Collider* m_pCollider;
+    Collider* m_pBroadCollider;
+    Collider* m_pNarrowCollider;
 };

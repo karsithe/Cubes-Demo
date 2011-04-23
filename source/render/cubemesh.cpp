@@ -14,7 +14,7 @@ void CubeMesh::update(float _deltaTime)
     glPushMatrix();
 
     glTranslatef(trans.m_position.m_x, trans.m_position.m_y, trans.m_position.m_z);
-    glScalef(trans.m_scale.m_x, trans.m_scale.m_y, trans.m_scale.m_z);
+    glScalef(trans.m_scale.m_x * 0.5f, trans.m_scale.m_y * 0.5f, trans.m_scale.m_z * 0.5f);
     glRotatef(trans.m_rotation.m_z, 0.0f, 0.0f, 1.0f);
     glRotatef(trans.m_rotation.m_x, 1.0f, 0.0f, 0.0f);
     glRotatef(trans.m_rotation.m_y, 0.0f, 1.0f, 0.0f);
