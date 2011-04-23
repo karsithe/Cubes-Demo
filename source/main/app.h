@@ -16,6 +16,7 @@ class Application
 public:
     Application();
 
+    // Program flow
     bool setup();
     bool run();
     bool end();

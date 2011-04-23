@@ -1,3 +1,9 @@
+/*
+    Entity
+    An object in the scene
+    Hazel McKendrick 2011
+*/
+
 #pragma once
 
 #include <vector>
@@ -7,10 +13,11 @@
 class Entity
 {
 public:
+    // Constructors
     Entity() {}
-
     Entity(Transform _transform) : m_transform(_transform) {}
 
+    // Add components to make up the functionality and attributes of the Entity
     void addComponent(Component* _pComponent)
     {
         _pComponent->setParent(this);
