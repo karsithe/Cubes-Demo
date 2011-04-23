@@ -33,7 +33,7 @@ void PhysicsManager::fixedUpdate(float _deltaTime)
     std::vector<RigidBody *>::iterator ppBody;
     for(ppBody = m_pBodies.begin(); ppBody != m_pBodies.end(); ++ppBody)
     {
-        (*ppBody)->applyExternalForces(_deltaTime);
+        (*ppBody)->applyForces(_deltaTime);
     }
 
     bruteForceCollision();

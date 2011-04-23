@@ -81,11 +81,29 @@ Quaternion& Quaternion::operator *= (const Quaternion& _rhs)
     return (*this);
 }
 
+// Compound addition
+Quaternion& Quaternion::operator += (const Quaternion& _rhs)
+{
+    m_w += _rhs.m_w;
+    m_x += _rhs.m_x;
+    m_y += _rhs.m_y;
+    m_z += _rhs.m_z;
+    return (*this);
+}
+
 // Multiplication
 Quaternion  Quaternion::operator *  (const Quaternion& _rhs) const
 {
     Quaternion q = (*this);
     q *= _rhs;
+    return q;
+}
+
+// Addition
+Quaternion  Quaternion::operator +  (const Quaternion& _rhs) const
+{
+    Quaternion q = (*this);
+    q += _rhs;
     return q;
 }
 

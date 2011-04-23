@@ -10,12 +10,14 @@
 #include "maths/vector3.h"
 
 class AABB;
+class OBB;
 class PlaneCollider;
 
 enum ColliderType
 {
     COLLIDER_NONE,
     COLLIDER_AABB,
+    COLLIDER_OBB,
     COLLIDER_PLANE
 };
 
@@ -37,4 +39,5 @@ private:
     // Collision tests
     static bool test(const AABB* _pAABB1, const AABB* _pAABB2, Contact* _contact);
     static bool test(const PlaneCollider* _pPlane, const AABB* _pAABB, Contact* _contact);
+    static bool test(const PlaneCollider* _pPlane, const OBB* _pOBB, Contact* _contact);
 };

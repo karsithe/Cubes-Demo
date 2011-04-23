@@ -35,17 +35,18 @@ void RigidBody::setup()
     }    
 }
 
-void RigidBody::applyExternalForces(float _deltaTime)
+void RigidBody::applyForces(float _deltaTime)
 {
     if(!m_body.m_static)
-        m_body.m_velocity += Vector3(0.f,1.f,0.f) * m_pPhysics->m_gravity * _deltaTime;
+        m_body.m_gatheredForce += Vector3(0.f,1.f,0.f) * m_pPhysics->m_gravity;
 
     m_pBroadCollider->m_position = m_body.m_position;
 }
 
 void RigidBody::update(float _deltaTime)
 {
-    m_body.m_position += m_body.m_velocity;
+    m_body.integrateRK4(_deltaTime);
+
     Transform t = m_pParent->getTransform();
     t.m_position = m_body.m_position;
     m_pParent->setTransform(t);
@@ -66,11 +67,12 @@ void RigidBody::onCollide(Contact _contact, RigidBody* _body)
 {
     if(m_body.m_static) return;
 
-    // Modify velocity
+    // Normal impulse
     Vector3 relativeV = m_body.m_velocity - _body->getBody().m_velocity;
-    Vector3 impulse = _contact.m_normal * (relativeV.dot(_contact.m_normal)) * (1.8f) / (m_body.m_inverseMass + _body->getBody().m_inverseMass);
+    Vector3 impulse = _contact.m_normal * (relativeV.dot(_contact.m_normal)) * (2.0f) / (m_body.m_inverseMass + _body->getBody().m_inverseMass) * -1.f;
+    m_body.m_momentum += impulse;
 
-    m_body.m_velocity -= impulse * m_body.m_inverseMass;
+
 }
 
 Collider* RigidBody::getCollider()

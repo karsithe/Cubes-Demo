@@ -18,6 +18,7 @@ public:
     float magnitude();
     float magnitudeSquared();
     Vector3 normalised();
+    Vector3 cross(Vector3 _rhs);
 
     // Modifiers
     void normalise();

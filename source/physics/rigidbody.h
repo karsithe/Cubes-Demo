@@ -14,7 +14,7 @@ public:
     RigidBody(ColliderType m_type = COLLIDER_AABB);
 
     void setup();
-    void applyExternalForces(float _deltaTime);
+    void applyForces(float _deltaTime);
     void update(float _deltaTime);
     void destroy();
 

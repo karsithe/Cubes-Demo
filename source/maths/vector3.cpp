@@ -45,6 +45,13 @@ Vector3 Vector3::normalised()
     return v;
 }
 
+Vector3 Vector3::cross(Vector3 _rhs)
+{
+    return Vector3(m_y * _rhs.m_z - m_z * _rhs.m_y,
+                   m_z * _rhs.m_x - m_x * _rhs.m_z,
+                   m_x * _rhs.m_y - m_y * _rhs.m_x);
+}
+
 
 // Modifiers
 

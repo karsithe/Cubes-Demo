@@ -26,7 +26,9 @@ public:
     bool        operator == (const Quaternion& _rhs);
 
     Quaternion& operator *= (const Quaternion& _rhs);
+    Quaternion& operator += (const Quaternion& _rhs);
     Quaternion  operator *  (const Quaternion& _rhs) const;
+    Quaternion  operator +  (const Quaternion& _rhs) const;
 
     Quaternion& operator /= (const float& _rhs);
     Quaternion& operator *= (const float& _rhs);
