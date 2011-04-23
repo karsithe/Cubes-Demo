@@ -122,11 +122,11 @@
     <ClInclude Include="..\..\source\physics\planecollider.h">
       <Filter>Header Files\physics\colliders</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\physics\body.h">
-      <Filter>Header Files\physics</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\maths\quaternion.h">
       <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\physics\bodystate.h">
+      <Filter>Header Files\physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

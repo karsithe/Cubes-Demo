@@ -47,12 +47,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\externals\include;$(ProjectDir)..\..\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4099</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\externals\lib-msvc100\$(ConfigurationName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>GLFW.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -90,7 +92,7 @@
     <ClInclude Include="..\..\source\maths\quaternion.h" />
     <ClInclude Include="..\..\source\maths\vector3.h" />
     <ClInclude Include="..\..\source\physics\aabb.h" />
-    <ClInclude Include="..\..\source\physics\body.h" />
+    <ClInclude Include="..\..\source\physics\bodystate.h" />
     <ClInclude Include="..\..\source\physics\collider.h" />
     <ClInclude Include="..\..\source\physics\contact.h" />
     <ClInclude Include="..\..\source\physics\physicsmanager.h" />

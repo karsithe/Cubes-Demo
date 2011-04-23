@@ -70,7 +70,7 @@ void PhysicsManager::bruteForceCollision()
             if(m_pBodies[i] != m_pBodies[j])
             {
                 Contact c;
-                if( m_pBodies[i]->getCollider()->test( m_pBodies[j]->getCollider(), &c ) )
+                if( Collider::test( m_pBodies[i]->getCollider(), m_pBodies[j]->getCollider(), &c ) )
                 {
                     m_pBodies[i]->onCollide(c, m_pBodies[j]);
                     m_pBodies[j]->onCollide(c, m_pBodies[i]);

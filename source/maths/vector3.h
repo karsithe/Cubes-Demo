@@ -4,17 +4,25 @@
     Hazel McKendrick 2011
 */
 
-
 #pragma once
 
 class Vector3
 {
 public: 
-    float m_x, m_y, m_z;
-
+    // Constructors
     Vector3();
     Vector3(float _x, float _y, float _z);
 
+    // Accessors
+    float dot(const Vector3& _rhs) const;
+    float magnitude();
+    float magnitudeSquared();
+    Vector3 normalised();
+
+    // Modifiers
+    void normalise();
+
+    // Operators
     Vector3& operator =  (const Vector3& _rhs);
     bool     operator == (const Vector3& _rhs);
 
@@ -28,7 +36,6 @@ public:
     Vector3  operator /  (const float& _rhs) const;
     Vector3  operator *  (const float& _rhs) const;
 
-    float dot(const Vector3& _rhs) const;
-    float magnitude();
-    void normalise();
+    // Data
+    float m_x, m_y, m_z;
 };

@@ -71,6 +71,7 @@ bool Quaternion::operator == (const Quaternion& _rhs)
     m_w == _rhs.m_w;
 }
 
+// Compound multiplication
 Quaternion& Quaternion::operator *= (const Quaternion& _rhs)
 {
     m_w = m_w * _rhs.m_w - m_x * _rhs.m_x - m_y * _rhs.m_y - m_z * _rhs.m_z;
@@ -80,6 +81,7 @@ Quaternion& Quaternion::operator *= (const Quaternion& _rhs)
     return (*this);
 }
 
+// Multiplication
 Quaternion  Quaternion::operator *  (const Quaternion& _rhs) const
 {
     Quaternion q = (*this);
@@ -87,6 +89,7 @@ Quaternion  Quaternion::operator *  (const Quaternion& _rhs) const
     return q;
 }
 
+// Compound devision by scalar
 Quaternion& Quaternion::operator /= (const float& _rhs)
 {
     m_x /= _rhs;
@@ -96,6 +99,7 @@ Quaternion& Quaternion::operator /= (const float& _rhs)
     return (*this);
 }
 
+// Compound multiplication by scalar
 Quaternion& Quaternion::operator *= (const float& _rhs)
 {
     m_x *= _rhs;
@@ -105,6 +109,7 @@ Quaternion& Quaternion::operator *= (const float& _rhs)
     return (*this);
 }
 
+// Division by scalar
 Quaternion  Quaternion::operator /  (const float& _rhs) const
 {
     Quaternion q = (*this);
@@ -112,6 +117,7 @@ Quaternion  Quaternion::operator /  (const float& _rhs) const
     return q;
 }
 
+// Multiplication by scalar
 Quaternion  Quaternion::operator *  (const float& _rhs) const
 {
     Quaternion q = (*this);
