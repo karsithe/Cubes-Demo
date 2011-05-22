@@ -22,7 +22,7 @@ bool Application::setup()
 
     glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 2);
     glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 1);
-    if (!glfwOpenWindow(400,400,0,0,0,0,0,0,GLFW_WINDOW))
+    if (!glfwOpenWindow(600,600,0,0,0,0,0,0,GLFW_WINDOW))
     {
         glfwTerminate();
         return 1;
@@ -33,7 +33,7 @@ bool Application::setup()
     PhysicsManager* p = new PhysicsManager();
     m_pManagers.push_back(p);
 
-    Entity* e = new Entity(Transform(Vector3(1.f,15.f,0.f), Vector3(3.f, 3.f, 3.f)));
+    Entity* e = new Entity(Transform(Vector3(2.f,15.f,0.f), Vector3(3.f, 3.f, 3.f)));
     CubeMesh* cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
@@ -42,7 +42,7 @@ bool Application::setup()
     p->addComponent(rb);
     m_pEntities.push_back(e);
 
-    e = new Entity(Transform(Vector3(0.0f,10.f,0.f), Vector3(1.f, 4.f, 3.f)));
+    e = new Entity(Transform(Vector3(0.0f,10.f,0.f), Vector3(2.f, 2.f, 2.f)));
     cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
@@ -51,7 +51,7 @@ bool Application::setup()
     p->addComponent(rb);
     m_pEntities.push_back(e);
 
-    e = new Entity(Transform(Vector3(-3.0f,12.f,0.f), Vector3(3.f, 3.f, 3.f)));
+    e = new Entity(Transform(Vector3(-5.0f,12.f,0.f), Vector3(3.f, 3.f, 3.f)));
     cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);
@@ -60,7 +60,25 @@ bool Application::setup()
     p->addComponent(rb);
     m_pEntities.push_back(e);
 
-    e = new Entity(Transform(Vector3(0.f, -10.f, 0.f), Vector3(15.f, 0.1f, 15.f)));
+    e = new Entity(Transform(Vector3(-2.0f,10.f,-4.f), Vector3(2.f, 2.f, 2.f)));
+    cm = new CubeMesh();
+    e->addComponent(cm);
+    r->addComponent(cm);
+    rb = new RigidBody(COLLIDER_AABB);
+    e->addComponent(rb);
+    p->addComponent(rb);
+    m_pEntities.push_back(e);
+
+    e = new Entity(Transform(Vector3(5.0f,16.f,2.f), Vector3(3.f, 3.f, 3.f)));
+    cm = new CubeMesh();
+    e->addComponent(cm);
+    r->addComponent(cm);
+    rb = new RigidBody(COLLIDER_AABB);
+    e->addComponent(rb);
+    p->addComponent(rb);
+    m_pEntities.push_back(e);
+
+    e = new Entity(Transform(Vector3(0.f, -10.f, 0.f), Vector3(50.f, 0.1f, 50.f)));
     cm = new CubeMesh();
     e->addComponent(cm);
     r->addComponent(cm);

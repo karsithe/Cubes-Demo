@@ -7,8 +7,9 @@ void PhysicsManager::setup()
 {
     m_fixedDeltaTime = 1/60.f;
     m_timeAccumulator = 0.f;
-    m_gravity = -0.1f;
-    m_floorY = -10.f;
+    m_gravity = -2.2f;
+    m_linearDamping = 0.04f;
+    m_angularDamping = 0.01f;
 
     std::vector<Component *>::iterator ppBody;
     for(ppBody = m_pComponents.begin(); ppBody != m_pComponents.end(); ++ppBody)

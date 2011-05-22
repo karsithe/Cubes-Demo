@@ -6,6 +6,8 @@
 
 #pragma once
 
+class Vector3;    
+
 class Quaternion
 {
 public:
@@ -17,6 +19,7 @@ public:
     float magnitude();
     float magnitudeSquared();
     Quaternion normalised();
+    Vector3 eulerAngles();
 
     // Modifiers
     void normalise();

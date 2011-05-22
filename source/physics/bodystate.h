@@ -41,6 +41,7 @@ public:
     bool m_static;
     float m_mass;
     float m_inverseMass;
+    float m_scale;
     float m_inertia;
     float m_inverseInertia;
 
@@ -62,10 +63,14 @@ public:
         recalculate();
     }
 
-private:
     // Calculate inferred values from updated values
     void recalculate()
     {
+        m_scale = 3.0f;
+        m_inverseMass = 1.f / m_mass;
+        m_inertia = m_mass * m_scale * m_scale * 1.0f / 6.0f;
+        m_inverseInertia = 1.f / m_inertia;
+
         // Linear motion
         m_velocity = m_momentum * m_inverseMass;
 
@@ -75,6 +80,7 @@ private:
         m_spin = Quaternion(0, m_angularVelocity.m_x, m_angularVelocity.m_y, m_angularVelocity.m_z) * m_orientation * 0.5f;
     }
 
+private:
     Derivative evaluate(float _deltaTime)
     {
         Derivative rtn;
@@ -93,11 +99,6 @@ private:
         m_angularMomentum += _derivative.m_torque * _deltaTime;
         recalculate();
 
-        Derivative rtn;
-        rtn.m_velocity = m_velocity;
-        rtn.m_spin = m_spin;
-        rtn.m_force = m_gatheredForce;
-        rtn.m_torque = m_gatheredTorque;
-        return rtn;
+        return evaluate(_deltaTime);
     }
 };

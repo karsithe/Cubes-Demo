@@ -135,4 +135,12 @@
       <Filter>Header Files\physics\colliders</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\references.txt">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\README">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

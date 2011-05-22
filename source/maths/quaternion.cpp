@@ -38,6 +38,17 @@ Quaternion Quaternion::normalised()
     return (*this) / magnitude();
 }
 
+// Get euler angles represented by this quaternion
+Vector3 Quaternion::eulerAngles()
+{
+    float degtorad = 57.2957795;
+    Vector3 rtn;
+    rtn.m_x = asin(2*m_x*m_y + 2*m_z*m_w) * degtorad;
+    rtn.m_y = atan2(2*m_y*m_w-2*m_x*m_z , 1 - 2*m_y*m_y - 2*m_z*m_z) * degtorad;
+    rtn.m_z = atan2(2*m_x*m_w-2*m_y*m_z , 1 - 2*m_x*m_x - 2*m_z*m_z) * degtorad;
+    return rtn;
+}
+
 
 // Modifiers
 

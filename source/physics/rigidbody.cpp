@@ -24,6 +24,7 @@ void RigidBody::setup()
     {
     case COLLIDER_AABB:
         m_body.m_static = false;
+        m_body.m_mass = 1.0f;
         m_pBroadCollider = new AABB(m_body.m_position, m_pParent->getTransform().m_scale * 0.5f);
         break;
     case COLLIDER_PLANE:
@@ -32,13 +33,24 @@ void RigidBody::setup()
         m_body.m_inverseMass = 1.f/m_body.m_mass;
         m_pBroadCollider = new PlaneCollider(m_body.m_position, Vector3(0,-1,0));
         break;
-    }    
+    }  
+
+    //m_body.recalculate();
 }
 
 void RigidBody::applyForces(float _deltaTime)
 {
     if(!m_body.m_static)
-        m_body.m_gatheredForce += Vector3(0.f,1.f,0.f) * m_pPhysics->m_gravity;
+    {
+        // Gravity
+        m_body.m_gatheredForce += Vector3(0.f,1.f,0.f) * m_pPhysics->m_gravity * m_body.m_inverseMass;
+
+        // Damping
+        m_body.m_gatheredForce += m_body.m_velocity * -m_pPhysics->m_linearDamping;
+        m_body.m_gatheredTorque += m_body.m_angularVelocity * -m_pPhysics->m_angularDamping;
+    }
+
+    //m_body.m_gatheredTorque += Vector3(0.f, 0.1f, 0.f);
 
     m_pBroadCollider->m_position = m_body.m_position;
 }
@@ -49,6 +61,7 @@ void RigidBody::update(float _deltaTime)
 
     Transform t = m_pParent->getTransform();
     t.m_position = m_body.m_position;
+    t.m_rotation = m_body.m_orientation.eulerAngles();
     m_pParent->setTransform(t);
 }
 
@@ -71,8 +84,7 @@ void RigidBody::onCollide(Contact _contact, RigidBody* _body)
     Vector3 relativeV = m_body.m_velocity - _body->getBody().m_velocity;
     Vector3 impulse = _contact.m_normal * (relativeV.dot(_contact.m_normal)) * (2.0f) / (m_body.m_inverseMass + _body->getBody().m_inverseMass) * -1.f;
     m_body.m_momentum += impulse;
-
-
+    m_body.m_gatheredTorque += impulse;
 }
 
 Collider* RigidBody::getCollider()

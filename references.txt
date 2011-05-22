@@ -1,0 +1,14 @@
+http://gafferongames.com/game-physics/physics-in-3d/
+
+http://gafferongames.com/game-physics/integration-basics/
+
+http://gafferongames.com/game-physics/fix-your-timestep/
+
+http://www-2.cs.cmu.edu/~baraff/sigcourse/notesd1.pdf
+
+http://www.cs.cmu.edu/afs/cs/user/baraff/www/pbm/pbm.html
+
+http://chrishecker.com/Physics_References#An_Annotated_Bibliography_for_Rigid_Body_Dynamics
+
+http://www.wildbunny.co.uk/blog/
+

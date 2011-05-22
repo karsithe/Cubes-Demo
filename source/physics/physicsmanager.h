@@ -15,7 +15,8 @@ public:
     void addComponent(Component* _pComponent);
 
     float m_gravity;
-    float m_floorY;
+    float m_linearDamping;
+    float m_angularDamping;
 
 private:
     void fixedUpdate(float _deltaTime);

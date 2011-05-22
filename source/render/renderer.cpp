@@ -25,7 +25,7 @@ void Renderer::update(float _deltaTime)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(0.0f, 0.0f, 30.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    gluLookAt(0.0f, 0.0f, 50.0f, 0.0f, 0.0f, 0.0f, 0.0f, 5.0f, 0.0f);
 
     std::vector<Component *>::iterator p;
     for(p = m_pComponents.begin(); p != m_pComponents.end(); ++p)
@@ -48,7 +48,7 @@ void Renderer::destroy()
 
 void Renderer::setupStates()
 {
-    int size = 400;
+    int size = 600;
     glViewport(0,0,size,size);
 
 	glMatrixMode(GL_PROJECTION);
